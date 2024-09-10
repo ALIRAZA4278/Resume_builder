@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Builder - by Ali raza</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="header">Resume Builder</h1>
+
+      <form id="resumeForm">
+        <fieldset>
+          <legend>Personal Information</legend>
+          <label for="username">username (for Resume URL)</label>
+          <input type="username" name="username" id="username" required>
+
+           <!-- Profile Picture -->
+    <label for="profilePicture">Profile Picture:</label>
+    <input type="file" id="profilePicture" accept="image/*" />
+    <img id="profilePicturePreview" src="" alt="Profile Picture" style="max-width: 150px; display: none;" />
+  </fieldset>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone" required />
+        </fieldset>
+
+        <fieldset>
+            <legend>Education</legend>
+            
+            <label for="school">School/University</label>
+            <input type="text" id="school" placeholder="Enter school/university" required />
+          
+            <label for="degree">Degree</label>
+            <input type="text" id="degree" placeholder="Enter degree" required/>
+          
+            <label for="field">Field of Study</label>
+            <input type="text" id="field" placeholder="Enter field of study" required/>
+          
+            <label for="years">Year of Graduation</label>
+            <input type="text" id="years" placeholder="Enter years (e.g., 2015-2020)" required/>
+          
+            <button type="button" id="add-education">Add Education</button>
+          </fieldset>
+          
+
+        <fieldset>
+          <legend>Skills</legend>
+          <input type="text" id="text" placeholder="Skill Name" required/>
+          <select id="option" name="option" required>
+            <label for="Skills-level" >Skills Level</label>
+            <option value="beginner">beginner</option>
+            <option value="intermediate">intermediate</option>
+            <option value="expert">expert</option>
+            <option value="professional">professional</option>
+          </select>
+          <button id="add-Skills">Add Skills</button>
+        </fieldset>
+
+        <fieldset>
+          <legend>Work Experience</legend>
+          <label for="company">Company</label>
+          <input type="text" id="company" placeholder="Enter company name" required/>
+      
+          <label for="jobTitle">Job Title</label>
+          <input type="text" id="jobTitle" placeholder="Enter job title" required/>
+      
+          <label for="years">Years Worked</label>
+          <input type="text" id="years" placeholder="Enter years (e.g., 2015-2020)" required/>
+      
+          <label for="jobDescription">Job Description</label>
+          <textarea id="jobDescription" placeholder="Describe your role"></textarea>
+      
+          <button type="button" id="addExperience">Add Work Experience</button>
+        </fieldset>
+
+        <button type="submit" class="btn">Generate Resume</button>
+        <button type="button" id="printResume" class="btn">Print in PDF</button>
+        
+      </form>
+      
+      
+      <div id="resumeOutput" class="resume-output">
+        Resume will be displayed here
+      </div>
+
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,215 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  form {
+    margin-bottom: 30px;
+  }
+  
+  fieldset {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  legend {
+    font-weight: bold;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input,
+  select,
+  textarea {
+    width: 98%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  textarea {
+    height: 100px;
+  }
+  
+  button {
+    background-color: rgb(59 130 246);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: rgb(4, 100, 255);
+  }
+  
+  .resume-output {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    min-height: 200px;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  @media print {
+    .container .header {
+      display: none;
+    }
+    form {
+      display: none;
+    }
+  
+    .resume-output {
+      font-size: 14px;
+      color: #000;
+    }
+  
+    body {
+      background-color: white;
+    }
+  
+    button {
+      display: none;
+    }
+  
+    #printResume {
+      display: none;
+    }
+    #username{
+      display: none;
+    }
+    a{
+      display: none;
+    }
+    .resume-output {
+      border: none;
+    }
+  }
+  
+  #profilePicturePreview {
+    max-width: 150px;
+    display: none;
+  }
+  
+  .resume-output img {
+    max-width: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+  
+  /*  */
+  /* Resume container */
+  .resume-container {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+  }
+  
+  /* Title styling */
+  .resume-title {
+    text-align: center;
+    color: #007bff;
+  }
+  
+  /* Section title styling */
+  .section-title {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  /* Personal info styling */
+  .personal-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .profile-picture {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  /* List styling */
+  .education-list,
+  .skills-list,
+  .work-experience-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .education-item,
+  .skills-item,
+  .work-experience-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Button styling */
+  .edit-btn,
+  .delete-btn {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-btn:hover,
+  .delete-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c82333;
+  }
+  
+  .work-description {
+    display: block;
+    margin-top: 5px;
+    font-style: italic;
+  }
+  
