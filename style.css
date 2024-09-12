@@ -70,7 +70,7 @@ body {
   
   .resume-output {
     background-color: #f9f9f9;
-    padding: 20px;
+    padding: 0px;
     border: 1px solid #ddd;
     border-radius: 8px;
     min-height: 200px;
@@ -128,11 +128,11 @@ body {
   /* Resume container */
   .resume-container {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
+    line-height: 1.2;
     color: #333;
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0px;
     background: #f9f9f9;
     border-radius: 10px;
   }
@@ -168,14 +168,16 @@ body {
   /* List styling */
   .education-list,
   .skills-list,
-  .work-experience-list {
+  .work-experience-list,
+  .additional-Information-list {
     list-style-type: none;
     padding: 0;
   }
   
   .education-item,
   .skills-item,
-  .work-experience-item {
+  .work-experience-item
+  .additional-information-item{
     padding: 10px;
     border-bottom: 1px solid #ddd;
   }

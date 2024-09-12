@@ -26,9 +26,16 @@ type Skill = {
   level: string;
 };
 
+type AdditionalInformation = {
+  languages: string;
+  hobbies: string;
+  references: string;
+};
+
 let educations: Education[] = [];
 let workExperiences: WorkExperience[] = [];
 let skills: Skill[] = [];
+let additionalInformation: AdditionalInformation[] = [];
 let profilePictureURL: string | undefined = undefined;
 
 const renderResume = () => {
@@ -82,12 +89,12 @@ const renderResume = () => {
           margin-bottom: 8px;
         }
 
-      .education-item, .skills-item, .work-experience-item {
+      .education-item, .skills-item, .work-experience-item , .additional-Information-item {
           font-size: 14px; /* Adjust font size for list items */
   }
 }
 
-      .personal-info, .education-list, .skills-list, .work-experience-list {
+      .personal-info, .education-list, .skills-list, .work-experience-list .{
         margin-left: 20px;
       }
       .profile-picture {
@@ -96,7 +103,7 @@ const renderResume = () => {
         border-radius: 50%;
         margin-bottom: 10px;
       }
-      .education-item, .skills-item, .work-experience-item {
+      .education-item, .skills-item, .work-experience-item, .additional-information-item{
         margin-bottom: 10px;
       }
       .edit-btn, .delete-btn {
@@ -124,56 +131,52 @@ const renderResume = () => {
       
       <h3 class="section-title">Personal Information</h3>
       <div class="personal-info">
-        ${
-          profilePictureURL
-            ? `<img src="${profilePictureURL}" alt="Profile Picture" class="profile-picture">`
-            : ""
-        }
-        <p><strong>Name:</strong> ${
-          (document.getElementById("name") as HTMLInputElement).value
-        }</p>
-        <p><strong>Email:</strong> ${
-          (document.getElementById("email") as HTMLInputElement).value
-        }</p>
-        <p><strong>Phone:</strong> ${
-          (document.getElementById("phone") as HTMLInputElement).value
-        }</p>
+        ${profilePictureURL
+      ? `<img src="${profilePictureURL}" alt="Profile Picture" class="profile-picture">`
+      : ""
+    }
+        <p><strong>Name:</strong> ${(document.getElementById("name") as HTMLInputElement).value
+    }</p>
+        <p><strong>Email:</strong> ${(document.getElementById("email") as HTMLInputElement).value
+    }</p>
+        <p><strong>Phone:</strong> ${(document.getElementById("phone") as HTMLInputElement).value
+    }</p>
       </div>
 
       <h3 class="section-title">Education</h3>
       <ul class="education-list">
         ${educations
-          .map(
-            (edu, index) => `
+      .map(
+        (edu, index) => `
             <li class="education-item">
               ${edu.school} - ${edu.degree}, ${edu.field} (${edu.years})
               <button type="button" class="edit-btn" onclick="editEducation(${index})">Edit</button>
               <button type="button" class="delete-btn" onclick="deleteEducation(${index})">Delete</button>
             </li>
           `
-          )
-          .join("")}
+      )
+      .join("")}
       </ul>
 
       <h3 class="section-title">Skills</h3>
       <ul class="skills-list">
         ${skills
-          .map(
-            (skill, index) => `
+      .map(
+        (skill, index) => `
             <li class="skills-item">
               ${skill.name} (${skill.level})
               <button type="button" class="delete-btn" onclick="deleteSkill(${index})">Delete</button>
             </li>
           `
-          )
-          .join("")}
+      )
+      .join("")}
       </ul>
       
       <h3 class="section-title">Work Experience</h3>
       <ul class="work-experience-list">
         ${workExperiences
-          .map(
-            (exp, index) => `
+      .map(
+        (exp, index) => `
             <li class="work-experience-item">
               ${exp.company} - ${exp.jobTitle} (${exp.years})
               <br><span class="work-description">${exp.description}</span>
@@ -181,9 +184,32 @@ const renderResume = () => {
               <button type="button" class="delete-btn" onclick="deleteExperience(${index})">Delete</button>
             </li>
           `
-          )
-          .join("")}
+      )
+      .join("")}
       </ul>
+      
+
+    <h3 class="section-title">Additional Information</h3>
+<ul class="additional-Information-list">
+  ${additionalInformation
+      .map(
+        (info, index) => `
+    <li class="additional-Information-item">
+      <strong>Languages:</strong> ${info.languages} 
+      <button type="button" class="delete-btn" onclick="deleteAdditionalInfo(${index}, 'languages')">Delete Languages</button>
+    </li>
+    <li class="additional-Information-item">
+      <strong>Hobbies:</strong> ${info.hobbies} 
+      <button type="button" class="delete-btn" onclick="deleteAdditionalInfo(${index}, 'hobbies')">Delete Hobbies</button>
+    </li>
+    <li class="additional-Information-item">
+      <strong>References:</strong> ${info.references} 
+      <button type="button" class="delete-btn" onclick="deleteAdditionalInfo(${index}, 'references')">Delete References</button>
+    </li>
+  `
+      )
+      .join("")}
+</ul>
     </div>
   `;
 
@@ -210,7 +236,7 @@ const renderResume = () => {
         margin-top: 20px;
         margin-bottom: 10px;
       }
-      .personal-info, .education-list, .skills-list, .work-experience-list {
+      .personal-info, .education-list, .skills-list, .work-experience-list, .additional-information-list {
         margin-left: 20px;
       }
       .profile-picture {
@@ -219,7 +245,7 @@ const renderResume = () => {
         border-radius: 50%;
         margin-bottom: 10px;
       }
-      .education-item, .skills-item, .work-experience-item {
+      .education-item, .skills-item, .work-experience-item .additional-information-item{
         margin-bottom: 10px;
       }
         
@@ -320,7 +346,8 @@ const renderResume = () => {
 
 .education-item,
 .skills-item,
-.work-experience-item {
+.work-experience-item 
+.additional-information-item{
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
@@ -351,62 +378,74 @@ const renderResume = () => {
       
       <h3 class="section-title">Personal Information</h3>
       <div class="personal-info">
-        ${
-          profilePictureURL
-            ? `<img src="${profilePictureURL}" alt="Profile Picture" class="profile-picture">`
-            : ""
-        }
-        <p><strong>Name:</strong> ${
-          (document.getElementById("name") as HTMLInputElement).value
-        }</p>
-        <p><strong>Email:</strong> ${
-          (document.getElementById("email") as HTMLInputElement).value
-        }</p>
-        <p><strong>Phone:</strong> ${
-          (document.getElementById("phone") as HTMLInputElement).value
-        }</p>
+        ${profilePictureURL
+      ? `<img src="${profilePictureURL}" alt="Profile Picture" class="profile-picture">`
+      : ""
+    }
+        <p><strong>Name:</strong> ${(document.getElementById("name") as HTMLInputElement).value
+    }</p>
+        <p><strong>Email:</strong> ${(document.getElementById("email") as HTMLInputElement).value
+    }</p>
+        <p><strong>Phone:</strong> ${(document.getElementById("phone") as HTMLInputElement).value
+    }</p>
       </div>
 
       <h3 class="section-title">Education</h3>
       <ul class="education-list">
         ${educations
-          .map(
-            (edu) => `
+      .map(
+        (edu) => `
             <li class="education-item">
               ${edu.school} - ${edu.degree}, ${edu.field} (${edu.years})
             </li>
           `
-          )
-          .join("")}
+      )
+      .join("")}
       </ul>
 
       <h3 class="section-title">Skills</h3>
       <ul class="skills-list">
         ${skills
-          .map(
-            (skill) => `
+      .map(
+        (skill) => `
             <li class="skills-item">
               ${skill.name} (${skill.level})
             </li>
           `
-          )
-          .join("")}
+      )
+      .join("")}
       </ul>
       
       <h3 class="section-title">Work Experience</h3>
       <ul class="work-experience-list">
         ${workExperiences
-          .map(
-            (exp) => `
+      .map(
+        (exp) => `
             <li class="work-experience-item">
               ${exp.company} - ${exp.jobTitle} (${exp.years})
               <br><span class="work-description">${exp.description}</span>
             </li>
           `
+      )
+      .join("")}
+      </ul>
+      <h3 class="section-title">Additional Information</h3>
+      <ul class="additional-information-list">
+        ${additionalInformation
+          .map(
+            (info) => `
+              <li class="additional-information-item">
+                <strong>Languages:</strong> ${info.languages || "N/A"}<br>
+                <strong>Hobbies:</strong> ${info.hobbies || "N/A"}<br>
+                <strong>References:</strong> ${info.references || "N/A"}<br>
+              </li>
+            `
           )
           .join("")}
       </ul>
     </div>
+
+
   `;
 
   // Render the resume on the page
@@ -483,6 +522,18 @@ document.getElementById("add-Skills")?.addEventListener("click", (e) => {
   }
 });
 
+document.getElementById("addInfo")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  const languages = (document.getElementById("languages") as HTMLInputElement).value;
+  const hobbies = (document.getElementById("hobbies") as HTMLInputElement).value;
+  const references = (document.getElementById("references") as HTMLInputElement).value;
+
+  if (languages || hobbies || references) {
+    additionalInformation.push({ languages, hobbies, references });
+    renderResume();
+  }
+});
+
 // Form Submit Handler
 resumeForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -553,3 +604,21 @@ profilePictureInput.addEventListener("change", (event) => {
   skills.splice(index, 1);
   renderResume();
 };
+
+
+(window as any).deleteAdditionalInfo = (index: number, field: string) => {
+  const info = additionalInformation[index];
+  if (field === 'languages') {
+    info.languages = '';
+  } else if (field === 'hobbies') {
+    info.hobbies = '';
+  } else if (field === 'references') {
+    info.references = '';
+  }
+  // Remove empty entries if needed
+  if (!info.languages && !info.hobbies && !info.references) {
+    additionalInformation.splice(index, 1);
+  }
+  renderResume();
+};
+
